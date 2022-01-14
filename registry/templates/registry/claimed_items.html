@@ -1,0 +1,36 @@
+<h3 class="block font-serif font-bold text-3xl mb-3">Items you've bought</h3>
+
+{% if claim.email_address == "" %}
+<div class="p-3 mx-auto mt-3 bg-yellow-50 text-yellow-900 rounded-md shadow-md flex items-center space-x-4">
+    <div class="flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+        </svg>
+    </div>
+    <div>
+        <p class="text-gray-700">You haven't yet provided an email address. <a href="#emailForm" class="underline text-yellow-900">entering one below</a> will allow you to come back later and make changes to your list.</p>
+    </div>
+    
+</div>
+{% endif %}
+
+{% if claim.email_address != "" and claim.email_sent == False %}
+<div class="p-3 mx-auto mt-3 bg-yellow-50 text-yellow-900 rounded-md shadow-md flex items-center space-x-4">
+    <div class="flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+        </svg>
+    </div>
+    <div>
+        <p class="text-gray-700">If you haven't received an email yet, <a href="#emailForm" class="underline text-yellow-900">submit the email form again</a> to resend the the notification.</p>
+    </div>
+    
+</div>
+{% endif %}
+
+
+<div class="grid grid-cols-1 divide-y divide-gray-200 gap-4">
+    {% for item in claimed_item_list %}
+        {% include 'registry/item_row.html' with action="remove" %}
+    {% endfor %}
+</div>

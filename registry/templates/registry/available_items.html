@@ -1,0 +1,5 @@
+<div class="grid grid-cols-1 divide-y divide-gray-200 gap-4">
+    {% for item in available_item_list %}
+        {% include 'registry/item_row.html' with action="add" %}
+    {% endfor %}
+</div>

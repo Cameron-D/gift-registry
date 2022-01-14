@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'AnnieUseYourTelescope';
+    src: url('/static/font/AnnieUseYourTelescope-Regular.eot');
+    src: url('/static/font/AnnieUseYourTelescope-Regular.eot?#iefix') format('embedded-opentype'), url('/static/font/AnnieUseYourTelescope-Regular.woff2') format('woff2'), url('/static/font/AnnieUseYourTelescope-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.text-shadow {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 0, 0, 0.6);
+}

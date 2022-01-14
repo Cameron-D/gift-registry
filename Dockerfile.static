@@ -1,0 +1,19 @@
+FROM python:3.9-alpine AS build
+
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV DJANGO_SETTINGS_MODULE registry.settings.prod
+
+WORKDIR /registry
+
+RUN apk add --no-cache nodejs npm gcc musl-dev mariadb-connector-c-dev
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+
+RUN python manage.py tailwind build
+RUN python manage.py collectstatic
+
+FROM nginx:alpine 
+COPY --from=build /build/static /usr/share/nginx/html/static

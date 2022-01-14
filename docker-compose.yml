@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.giftapp.rule=Host(`gifts.example.com`)"
+        - "traefik.http.routers.giftapp.entrypoints=websecure"
+        - "traefik.http.routers.giftapp.tls.certresolver=le"
+        - "traefik.http.routers.giftapp.middlewares=redirect-to-https"
+        - "traefik.http.services.giftapp.loadbalancer.server.port=8000"
+
+  static:
+    build:
+      context: .
+      dockerfile: Dockerfile.static
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.giftstatic.rule=Host(`gifts.example.com`) && PathPrefix(`/static/`)"
+        - "traefik.http.routers.giftstatic.entrypoints=websecure"
+        - "traefik.http.routers.giftstatic.tls.certresolver=le"
+        - "traefik.http.routers.giftstatic.middlewares=redirect-to-https"
+        - "traefik.http.services.giftstatic.loadbalancer.server.port=80"
+
+  traefik:
+    image: "traefik:v2.5"
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--certificatesresolvers.le.acme.email=you@example.com"
+      - "--certificatesresolvers.le.acme.storage=/store/acme.json"
+      - "--certificatesresolvers.le.acme.tlschallenge=true"
+      - "--providers.file.filename=/store/config.yaml"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./store:/store"

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Jo and Cameron's Baby Item Registry{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+<div class="relative py-3 sm:max-w-4xl sm:mx-auto">
+
+<h1 class="font-serif font-decorative text-8xl text-center text-gray-50 text-shadow" style="font-family: AnnieUseYourTelescope">J and C's</h1>
+<h2 class="font-serif text-2xl text-center text-gray-50 text-shadow md:mb-20">Baby Item Registry</h2>
+
+
+{% include 'registry/block_messages.html' %}
+
+{% include 'registry/block_items.html' %}
+
+{% include 'registry/block_email.html' %}
+
+</div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+<script>
+initItemList();
+</script>
+
+{% endblock %}

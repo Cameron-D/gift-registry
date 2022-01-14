@@ -1,0 +1,9 @@
+{% if messages %}
+<div class="relative px-4 py-10 bg-yellow-100 shadow-xl sm:rounded-lg sm:p-8 my-12 ">
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
