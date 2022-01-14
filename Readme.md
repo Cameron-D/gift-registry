@@ -36,13 +36,13 @@ A simple gift registry web service. Thematically designed for a baby shower, but
 ## Screenshots
 
 ### Main Page
-<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/MainPage.png" width="400" />
+<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/MainPage.jpg" width="400" />
 
 ### Claimed Items
-<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/YourItems.png" width="400" />
+<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/YourItems.jpg" width="400" />
 
 ### Email Address Field
-<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/EmailAddress.png" width="400" />
+<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/EmailAddress.jpg" width="400" />
 
 ### All Item States
-<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/ItemStates.png" width="400" />
+<img src="https://raw.githubusercontent.com/Cameron-D/gift-registry/main/screenshots/ItemStates.jpg" width="400" />
